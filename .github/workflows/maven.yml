@@ -38,7 +38,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONARTOKEN }}  # analysis token associated to your project
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: |
-          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+          mvn -B -X verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
             -Dsonar.projectKey=haythem05_back \
             -Dsonar.projectName=back
           # Replace SONAR_PROJECT_KEY and SONAR_PROJECT_NAME with your actual project key and name
