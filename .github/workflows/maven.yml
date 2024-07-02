@@ -57,4 +57,4 @@ jobs:
             -Dsonar.projectKey=haythem05_back \
             -Dsonar.projectName=back
           # Replace SONAR_PROJECT_KEY and SONAR_PROJECT_NAME with your actual project key and name
-#test
+#ya hama sayabni 
