@@ -11,7 +11,7 @@ jobs:
   #build:
     #runs-on: ubuntu-latest
 
-    steps:
+    #steps:
       # Commented out build steps
       # - uses: actions/checkout@v4
 
@@ -50,7 +50,7 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       - name: SonarQube Scan
         env:
-          SONAR_TOKEN: ${{ secrets.SONARTOKEN }}  # analysis token associated to your project
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  # analysis token associated to your project
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: |
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
