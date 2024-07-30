@@ -31,15 +31,18 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+
+
+
 public class UserServices {
 
     private static final long EXPIRE_TOKEN_AFTER_MINUTES = 60;
 
     @Autowired
     private UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+    private  final PasswordEncoder passwordEncoder;
 
-    @Autowired(required = false)
+    @Autowired
     private JavaMailSender mailSender;
 
     @Autowired
@@ -49,18 +52,21 @@ public class UserServices {
     @Autowired
     private JwtService jwtService;
 
-    public List<User> ShowAllUsers() {
+    public List<User> ShowAllUsers()
+    {
         List<User> users = userRepository.findAll();
         return users;
     }
 
-    public void DeleteUser(Long id) {
+    public void DeleteUser(Long id)
+    {
+
         User user = userRepository.findById(id).get();
         this.userRepository.delete(user);
     }
-
-    public ResponseEntity<User> GetUserById(@PathVariable Long id) {
-        User user = userRepository.findById(id).get();
+    public ResponseEntity<User> GetUserById(@PathVariable Long id)
+    {
+        User user  = userRepository.findById(id).get();
         return ResponseEntity.ok(user);
     }
 
@@ -97,32 +103,35 @@ public class UserServices {
         }
     }
 
-    public User findUserByEmail(String email) {
-        return userRepository.findByEmail(email).orElse(null);
-    }
 
+    public User findUserByEmail(String email) {
+
+        return userRepository.findByEmail(email).orElse(null);
+
+    }
     public User getUserByToken(String token) {
         try {
             String email = this.jwtService.extractUsername(token);
             if (email != null) {
                 User user = this.findUserByEmail(email);
                 if (user != null)
+
                     return user;
+
             }
         } catch (ExpiredJwtException expiredJwtException) {
             return null;
         }
         return null;
+
     }
+
+
+
 
     @Async
     public void sendEmail(SimpleMailMessage email) {
-        if (mailSender != null) {
-            mailSender.send(email);
-        } else {
-            // Log or handle the case where mail sending is disabled
-            System.out.println("Mail sending is disabled.");
-        }
+        mailSender.send(email);
     }
 
     public String getPasswordByEmail(String email) {
@@ -133,6 +142,8 @@ public class UserServices {
             return null; // or throw an exception indicating user not found
         }
     }
+
+
 
     public void handleFailedLogin(User user) {
         user.setLoginAttempts(user.getLoginAttempts() + 1);
@@ -151,7 +162,10 @@ public class UserServices {
 
     public void resetBannedStatus(Long userId) {
         User user = userRepository.findById(userId).get();
+
         user.setBanned(false);
         userRepository.save(user);
     }
+
+
 }
