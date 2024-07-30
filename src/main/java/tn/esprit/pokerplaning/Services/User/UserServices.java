@@ -42,6 +42,7 @@ public class UserServices {
     private UserRepository userRepository;
     private  final PasswordEncoder passwordEncoder;
 
+ 
     @Autowired
     private JavaMailSender mailSender;
 
