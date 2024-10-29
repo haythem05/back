@@ -70,12 +70,7 @@
             <scope>runtime</scope>
         </dependency>
 
-        <properties>
-            <sonar.organization>haythem05</sonar.organization>
-            <sonar.projectKey>haythem05_back</sonar.projectKey>
-            <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-        </properties>
-
+  
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
