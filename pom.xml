@@ -16,6 +16,18 @@
     <properties>
         <java.version>17</java.version>
     </properties>
+
+    <distributionManagement>
+            <repository>
+                <id>nexus-releases</id>
+                <url>http://<192.168.231.128>:8081/repository/maven-releases/</url>
+            </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <url>http://<192.168.231.128>:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -77,6 +89,10 @@
             <version>5.8.0</version>
             <scope>test</scope>
         </dependency>
+
+
+   
+
 
 
 <!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
