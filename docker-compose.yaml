@@ -18,7 +18,7 @@ services:
     
       
   backend:
-    build:  .\BACK\
+    build:  .
     ports:
       - "8082:8080"
     environment:
