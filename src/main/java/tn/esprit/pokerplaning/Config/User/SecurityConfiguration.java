@@ -32,7 +32,7 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
 
-                        req ->req.requestMatchers("/api/auth/**" , "/vote/**" ,"/tasks/**","/sprints/**","/api/**","/room/**","/websoket/**","/cards/**","/packs/**")
+                        req ->req.requestMatchers("/api/auth/**" ,"/actuator/prometheus" , "/vote/**" ,"/tasks/**","/sprints/**","/api/**","/room/**","/websoket/**","/cards/**","/packs/**")
 
                                 .permitAll()
                                 .anyRequest()
