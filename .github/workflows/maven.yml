@@ -56,6 +56,7 @@ jobs:
             -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }} \
             -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }} \
             -Dsonar.projectName=${{ secrets.SONAR_PROJECT_NAME }}
+            
 
   dockerpush:
     name: Build and push Docker image
